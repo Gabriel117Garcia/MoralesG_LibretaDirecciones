@@ -1,0 +1,1 @@
+AddressEntry{firstName='Gabriel', lastName='Morales', street='Revolución 127', city='Coatzacoalcos', state='Veracruz', postalCode='96365', email='toni@gmail.com', phoneNumber='9213109705'}

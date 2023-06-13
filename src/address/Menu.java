@@ -72,9 +72,7 @@ public class Menu {
      * y llama al método correspondiente en la clase AddressBook para cargar las entradas desde el archivo.
      */
     private void loadEntriesFromFile() {
-        System.out.print("Ingrese el nombre del archivo: ");
-        String fileName = new Scanner(System.in).nextLine();
-        addressBook.loadEntriesFromFile(fileName);
+        addressBook.loadEntriesFromFile("src\\addressData\\addressBook.txt");
     }
 
     /**

@@ -95,11 +95,6 @@ public class Address {
      */
     @Override
     public String toString() {
-        return "Dirección {" +
-                "Calle='" + street + '\'' +
-                ", Ciudad='" + city + '\'' +
-                ", Estado='" + state + '\'' +
-                ", Código postal='" + postalCode + '\'' +
-                '}';
+        return street + ", " + city + ", " + state + ", " + postalCode;
     }
 }

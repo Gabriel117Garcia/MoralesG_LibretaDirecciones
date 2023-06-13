@@ -85,7 +85,7 @@ public class AddressBook {
      * @param fileName El nombre del archivo de texto.
      */
     public void loadEntriesFromFile(String fileName) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src\\addressData\\addressBook.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -114,11 +114,12 @@ public class AddressBook {
      * @param fileName El nombre del archivo de texto.
      */
     private void saveEntriesToFile() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src\\addressData\\addressBook.txt"  ))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src\\addressData\\addressBook.txt"))) {
             for (AddressEntry entry : entries) {
-                writer.write(entry.toString());
+                writer.write(entry.toString()); // Llamada al método toString() de AddressEntry
                 writer.newLine();
             }
+            System.out.println("Las entradas se guardaron correctamente en el archivo.");
         } catch (IOException e) {
             System.out.println("Error al guardar las entradas en el archivo: " + e.getMessage());
         }

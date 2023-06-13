@@ -120,9 +120,6 @@ public class AddressEntry {
      */
     @Override
     public String toString() {
-        return "Name: " + getFullName() + "\n" +
-                "Address: " + address + "\n" +
-                "Email: " + email + "\n" +
-                "Phone: " + phoneNumber;
+        return getFullName() + ", " + address.toString() + ", " + email + ", " + phoneNumber;
     }
 }

@@ -6,23 +6,48 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Esta clase representa una libreta de direcciones.
+ * Contiene una lista de entradas de direcciones y métodos para agregar, eliminar y buscar entradas.
+ */
 public class AddressBook {
     private List<AddressEntry> entries;
 
+    /**
+     * Constructor de la clase AddressBook.
+     * Inicializa la lista de entradas de direcciones.
+     */
     public AddressBook() {
         entries = new ArrayList<>();
     }
 
+    /**
+     * Este método agrega una entrada en las direcciones de la lista
+     * y actualiza el archivo de texto.
+     * @param entry La entrada que se va a agregar.
+     */
     public void addEntry(AddressEntry entry) {
         entries.add(entry);
         saveEntriesToFile();
     }
 
+    /**
+     * Este método elimina una entrada en  las direcciones de la lista
+     * y actualiza el archivo de texto.
+     * @param entry La entrada que se va a eliminar.
+     */
     public void deleteEntry(AddressEntry entry) {
         entries.remove(entry);
         saveEntriesToFile();
     }
 
+    /**
+     * Este método busca una entrada en las direcciones de la lista,
+     * pidiendo al usuario que ingrese una letra del apellido de la persona,
+     * y regresa todas las entradas que coinciden con la búsqueda.
+     * @return Un arreglo de entradas que coinciden con la búsqueda.
+     * @param query La letra del apellido de la persona.
+     */
     public AddressEntry[] searchByLastName(String query) {
         List<AddressEntry> searchResults = new ArrayList<>();
 
@@ -35,6 +60,11 @@ public class AddressBook {
         return searchResults.toArray(new AddressEntry[0]);
     }
 
+    /**
+     * Este método muestra todas las entradas en las direcciones de la lista
+     * en orden alfabético.
+     * @param entries La lista de entradas que se van a mostrar
+     */
     public void displayEntriesAlphabetically() {
         List<AddressEntry> sortedEntries = new ArrayList<>(entries);
 
@@ -50,6 +80,10 @@ public class AddressBook {
         }
     }
 
+    /**
+     * Este método carga las entradas de direcciones desde un archivo de texto.
+     * @param fileName El nombre del archivo de texto.
+     */
     public void loadEntriesFromFile(String fileName) {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
@@ -65,7 +99,7 @@ public class AddressBook {
                     String email = parts[6].trim();
                     String phone = parts[7].trim();
 
-                    AddressEntry entry = new AddressEntry(firstName, lastName, street, city, state, postalCode, email, phone);
+                    AddressEntry entry = new AddressEntry(firstName, lastName, new Address(street, city, state, postalCode), email, phone);
                     entries.add(entry);
                 }
             }
@@ -75,6 +109,10 @@ public class AddressBook {
         }
     }
 
+    /**
+     * Este método guarda las entradas de direcciones en un archivo de texto.
+     * @param fileName El nombre del archivo de texto.
+     */
     private void saveEntriesToFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src\\addressData\\addressBook.txt"  ))) {
             for (AddressEntry entry : entries) {
@@ -85,6 +123,11 @@ public class AddressBook {
             System.out.println("Error al guardar las entradas en el archivo: " + e.getMessage());
         }
     }
+
+    /**
+     * Este método regresa todas las entradas en las direcciones de la lista.
+     * @return Un arreglo de entradas.
+     */
     public AddressEntry[] getEntries () {
         return entries.toArray(new AddressEntry[0]);
     }

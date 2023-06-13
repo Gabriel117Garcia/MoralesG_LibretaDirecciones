@@ -1,19 +1,31 @@
 package address;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
+import addressData.Address;
 import addressData.AddressBook;
 import addressData.AddressEntry;
 
+/**
+ * Clase que representa el menú de la aplicación,
+ * y que contiene la lógica para cada una de las opciones del menú para el usuario.
+ */
 public class Menu {
     private AddressBook addressBook;
 
+    /**
+     * Constructor de la clase Menu.
+     * Recibe como parámetro una instancia de la clase AddressBook.
+     * @param addressBook Instancia de la clase AddressBook.
+     */
     public Menu(AddressBook addressBook) {
         this.addressBook = addressBook;
         Scanner scanner = new Scanner(System.in);
     }
 
+    /**
+     * Método que muestra el menú de la aplicación y lee la opción ingresada por el usuario,
+     * luego llama al método correspondiente para ejecutar la opción ingresada.
+     */
     public void displayMenu() {
         Scanner scanner = new Scanner(System.in);
 
@@ -55,12 +67,19 @@ public class Menu {
         }
     }
 
+    /**
+     * Método que lee el nombre de un archivo ingresado por el usuario,
+     * y llama al método correspondiente en la clase AddressBook para cargar las entradas desde el archivo.
+     */
     private void loadEntriesFromFile() {
         System.out.print("Ingrese el nombre del archivo: ");
         String fileName = new Scanner(System.in).nextLine();
         addressBook.loadEntriesFromFile(fileName);
     }
 
+    /**
+     * Método que sirve para agregar una entrada a la libreta de direcciones.
+     */
     private void addEntry() {
         // Lógica para agregar una nueva entrada
         Scanner scanner = new Scanner(System.in);
@@ -90,11 +109,15 @@ public class Menu {
         System.out.print("Teléfono: ");
         String phone = scanner.nextLine();
 
-        AddressEntry newEntry = new AddressEntry(firstName, lastName, street, city, state, postalCode, email, phone);
+        AddressEntry newEntry = new AddressEntry(firstName, lastName, new Address(street, city, state, postalCode), email, phone);
         addressBook.addEntry(newEntry); // Llamar al método correspondiente en la clase AddressBook
         System.out.println("La entrada ha sido agregada correctamente.");
     }
 
+    /**
+     * Método que lee el apellido de una entrada ingresado por el usuario,
+     * y llama al método correspondiente en la clase AddressBook para eliminar la entrada.
+     */
     private void deleteEntry() {
         // Lógica para eliminar una entrada
         Scanner scanner = new Scanner(System.in);
@@ -128,6 +151,11 @@ public class Menu {
         System.out.println("La entrada ha sido eliminada correctamente.");
     }
 
+    /**
+     * Método que lee el inicio del apellido de una entrada ingresado por el usuario,
+     * y llama al método correspondiente en la clase AddressBook para buscar las entradas
+     * para mostrarlas en pantalla.
+     */
     private void searchByLastName() {
         // Lógica para buscar entradas por apellido
         Scanner scanner = new Scanner(System.in);
@@ -147,6 +175,10 @@ public class Menu {
         }
     }
 
+    /**
+     * Método que llama al método correspondiente en la clase AddressBook para obtener
+     * todas las entradas y mostrarlas en pantalla de forma alfabética.
+     */
     private void displayEntriesAlphabetically() {
         // Lógica para mostrar las direcciones en orden alfabético
         AddressEntry[] entries = addressBook.getEntries(); // Obtener todas las entradas de la clase AddressBook

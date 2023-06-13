@@ -1,114 +1,128 @@
 package addressData;
 
-import java.util.Scanner;
-
+/**
+ * Clase que representa una entrada de dirección/contacto en la libreta de direcciones.
+ */
 public class AddressEntry {
     private String firstName;
     private String lastName;
-    private String street;
-    private String city;
-    private String state;
-    private String postalCode;
+    private Address address;
     private String email;
     private String phoneNumber;
 
-    public AddressEntry(String firstName, String lastName, String street, String city, String state, String postalCode, String email, String phoneNumber) {
-        this.firstName = validateString(firstName, "First Name");
-        this.lastName = validateString(lastName, "Last Name");
-        this.street = validateString(street, "Street");
-        this.city = validateString(city, "City");
-        this.state = validateString(state, "State");
-        this.postalCode = validateString(postalCode, "Postal Code");
-        this.email = validateString(email, "Email");
-        this.phoneNumber = validateString(phoneNumber, "Phone Number");
+    /**
+     * Constructor que acepta un nombre, un apellido, una dirección, un correo electrónico y un número de teléfono.
+     * @param firstName     El nombre de la persona.
+     * @param lastName      El apellido de la persona.
+     * @param address       La dirección de la persona.
+     * @param email         El correo electrónico de la persona.
+     * @param phoneNumber   El número de teléfono de la persona.
+     */
+    public AddressEntry(String firstName, String lastName, Address address, String email, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 
-    private String validateString(String value, String fieldName) {
-        Scanner scanner = new Scanner(System.in);
-
-        while (value.isEmpty()) {
-            System.out.println(fieldName + " no puede ser vacío. Por favor ingresa algo válido en " + fieldName + ":");
-            value = scanner.nextLine();
-        }
-
-        return value;
+    /**
+     * Método que devuelve el nombre completo de la persona.
+     * @return El nombre completo de la persona.
+     */
+    public String getFullName() {
+        return firstName + " " + lastName;
     }
 
+
+    /**
+     * getter del atributo firstName.
+     * @return Devuelve el atributo firstName.
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * setter del atributo firstName.
+     * @param firstName: El nuevo valor del atributo firstName.
+     */
     public void setFirstName(String firstName) {
-        this.firstName = validateString(firstName, "First Name");
+        this.firstName = firstName;
     }
 
+    /**
+     * getter del atributo lastName.
+     * @return Devuelve el atributo lastName.
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * setter del atributo lastName.
+     * @param lastName: El nuevo valor del atributo lastName.
+     */
     public void setLastName(String lastName) {
-        this.lastName = validateString(lastName, "Last Name");
+        this.lastName = lastName;
     }
 
-    public String getStreet() {
-        return street;
+    /**
+     * getter del atributo address.
+     * @return Devuelve el atributo address.
+     */
+    public Address getAddress() {
+        return address;
     }
 
-    public void setStreet(String street) {
-        this.street = validateString(street, "Street");
+    /**
+     * setter del atributo address.
+     * @param address: El nuevo valor del atributo address.
+     */
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = validateString(city, "City");
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = validateString(state, "State");
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = validateString(postalCode, "Postal Code");
-    }
-
+    /**
+     * getter del atributo email.
+     * @return Devuelve el atributo email.
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * setter del atributo email.
+     * @param email: El nuevo valor del atributo email.
+     */
     public void setEmail(String email) {
-        this.email = validateString(email, "Email");
+        this.email = email;
     }
 
+    /**
+     * getter del atributo phoneNumber.
+     * @return Devuelve el atributo phoneNumber.
+     */
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
+    /**
+     * setter del atributo phoneNumber.
+     * @param phoneNumber: El nuevo valor del atributo phoneNumber.
+     */
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = validateString(phoneNumber, "Phone Number");
+        this.phoneNumber = phoneNumber;
     }
 
+    /**
+     * Método que devuelve una cadena con los datos de la persona.
+     */
     @Override
     public String toString() {
-        return "AddressEntry{" +
-                "Nombre='" + firstName + '\'' +
-                ", Apellido='" + lastName + '\'' +
-                ", Calle='" + street + '\'' +
-                ", Ciudad='" + city + '\'' +
-                ", Estado='" + state + '\'' +
-                ", Código postal='" + postalCode + '\'' +
-                ", Correo electrónico='" + email + '\'' +
-                ", Teléfono='" + phoneNumber + '\'' +
-                '}';
+        return "Name: " + getFullName() + "\n" +
+                "Address: " + address + "\n" +
+                "Email: " + email + "\n" +
+                "Phone: " + phoneNumber;
     }
 }

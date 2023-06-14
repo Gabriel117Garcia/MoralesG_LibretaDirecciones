@@ -8,7 +8,7 @@ public class AddressEntry {
     private String lastName;
     private Address address;
     private String email;
-    private String phoneNumber;
+    private int phoneNumber;
 
     /**
      * Constructor que acepta un nombre, un apellido, una dirección, un correo electrónico y un número de teléfono.
@@ -18,7 +18,7 @@ public class AddressEntry {
      * @param email         El correo electrónico de la persona.
      * @param phoneNumber   El número de teléfono de la persona.
      */
-    public AddressEntry(String firstName, String lastName, Address address, String email, String phoneNumber) {
+    public AddressEntry(String firstName, String lastName, Address address, String email, int phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -103,7 +103,7 @@ public class AddressEntry {
      * getter del atributo phoneNumber.
      * @return Devuelve el atributo phoneNumber.
      */
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -111,7 +111,7 @@ public class AddressEntry {
      * setter del atributo phoneNumber.
      * @param phoneNumber: El nuevo valor del atributo phoneNumber.
      */
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

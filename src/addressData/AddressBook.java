@@ -95,9 +95,9 @@ public class AddressBook {
                     String street = parts[2].trim();
                     String city = parts[3].trim();
                     String state = parts[4].trim();
-                    String postalCode = parts[5].trim();
+                    int postalCode = Integer.parseInt(parts[5].trim());
                     String email = parts[6].trim();
-                    String phone = parts[7].trim();
+                    int phone = Integer.parseInt(parts[7].trim());
 
                     AddressEntry entry = new AddressEntry(firstName, lastName, new Address(street, city, state, postalCode), email, phone);
                     entries.add(entry);

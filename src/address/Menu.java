@@ -99,13 +99,13 @@ public class Menu {
         String state = scanner.nextLine();
 
         System.out.print("Código postal: ");
-        String postalCode = scanner.nextLine();
+        int postalCode = Integer.parseInt(scanner.nextLine());
 
         System.out.print("Correo electrónico: ");
         String email = scanner.nextLine();
 
         System.out.print("Teléfono: ");
-        String phone = scanner.nextLine();
+        int phone = Integer.parseInt(scanner.nextLine());
 
         AddressEntry newEntry = new AddressEntry(firstName, lastName, new Address(street, city, state, postalCode), email, phone);
         addressBook.addEntry(newEntry); // Llamar al método correspondiente en la clase AddressBook

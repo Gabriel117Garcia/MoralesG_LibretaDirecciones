@@ -8,7 +8,7 @@ public class Address {
     private String street;
     private String city;
     private String state;
-    private String postalCode;
+    private int postalCode;
 
     /**
      * Constructor de la clase Address.
@@ -18,7 +18,7 @@ public class Address {
      * @param state: Estado de la dirección.
      * @param postalCode: Código postal de la dirección.
      */
-    public Address(String street, String city, String state, String postalCode) {
+    public Address(String street, String city, String state, int postalCode) {
         this.street = street;
         this.city = city;
         this.state = state;
@@ -53,7 +53,7 @@ public class Address {
      * getter del atributo postalCode.
      * @return: Devuelve el atributo postalCode.
      */
-    public String getPostalCode() {
+    public int getPostalCode() {
         return postalCode;
     }
 
@@ -85,7 +85,7 @@ public class Address {
      * setter del atributo postalCode.
      * @param postalCode: Código postal de la dirección.
      */
-    public void setPostalCode(String postalCode) {
+    public void setPostalCode(int postalCode) {
         this.postalCode = postalCode;
     }
 
